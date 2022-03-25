@@ -1,7 +1,7 @@
 import React from 'react';
 import {Router,Route,Switch,Redirect} from 'react-router-dom';
 import { createHashHistory } from "history";
-import {test} from "./test/test";
+import {Test} from "./test/test";
 const history = createHashHistory();
 
 class RouterConfig extends React.Component{
@@ -12,8 +12,8 @@ class RouterConfig extends React.Component{
                     <Route path='/' exact render={()=>(
                         <Redirect to='/Page1'/>
                     )}/>
-                    <Route path='/Page1' component={test}/>
-                    <Route path='/Page2' component={test}/>
+                    <Route path='/Page1' component={Test}/>
+                    <Route path='/Page2' component={Test}/>
                 </Switch>
             </Router>
         )
