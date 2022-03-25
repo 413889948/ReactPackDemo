@@ -1,5 +1,6 @@
 
 
+
 export const get=()=>{
     fetch('http://localhost/console/scene/scenedetaillist',{
         method:'GET',
