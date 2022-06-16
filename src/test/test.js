@@ -1,10 +1,11 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { Terminal } from 'xterm';
 import {get} from "../util/HttpUtil";
 import './test.css';
 import axios from "axios";
 import { Row, Col } from 'antd';
 import { Button,Space } from 'antd';
+import { Input } from 'antd';
 const Test=()=>{
    // useEffect(()=>{
    //     let terminalContainer = document.getElementById("test");
@@ -53,20 +54,11 @@ const Test=()=>{
         // })
 
 
-        var opts = {
-            method:"GET",
-            mode : 'cors'
-        };
-        fetch('http://localhost:8080/showMethodByWatch?string=1123',opts)
-            .then((res) => res.json()).then(
-            (result) => {
-                console.log(result);
-            }
-        );
+        
 
 
     },[]);
-
+const [data,setData]=useState({});
     return(
         <div  id='test'>
             <Row>
@@ -75,9 +67,21 @@ const Test=()=>{
                 </Col>
                 <Col span={12}>
                     <Space>
-                        <Button type="primary">测试监听方法</Button>
-                          <Button type="primary">Primary Button</Button>
-                        <Button type="primary">Primary Button</Button>
+                        <Input placeholder="关键词" onChange={e=>{
+                            console.log(e);
+                        }}/>
+                        <Button type="primary" onClick={()=>{
+                            var opts = {
+                                method:"GET",
+                                mode : 'cors'
+                            };
+                            fetch('http://localhost:8080/search?key='+data,opts)
+                                .then((res) => res.json()).then(
+                                (result) => {
+                                    console.log(result);
+                                }
+                            );
+                        }}>查询</Button>
                     </Space>
                 </Col>
                 <Col span={6}>
